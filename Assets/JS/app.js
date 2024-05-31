@@ -18,6 +18,8 @@ elAceptar.addEventListener("click", () => {
     if (elPassword.value != elPasswordConfirm.value) {
         // Mostrar un mensaje de error si las contraseñas no coinciden
         passwordError.innerHTML = "Las contraseñas no coinciden";
+        elPassword.style.borderColor = "red";
+        elPasswordConfirm.style.borderColor = "red";
     } else {
         // Si las contraseñas coinciden, limpiar cualquier indicación de error
         elPassword.style.borderColor = "";
