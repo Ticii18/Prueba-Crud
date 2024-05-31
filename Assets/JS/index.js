@@ -16,49 +16,45 @@
 
 // })
 
-let tareas = []
-let contenido = document.getElementById("contenido");
+// creamos el array
+let tareas = []; // Arreglo para almacenar las tareas
 
+let contenido = document.getElementById("contenido"); // Obtener el elemento HTML con el id "contenido"
 
+// Función para crear una nueva tarea
 const crearTarea = () => {
-    const nombreTarea = document.getElementById("tarea").value;
-    tareas.push(nombreTarea);
-
-    pintarTareas(tareas)
-
+    const nombreTarea = document.getElementById("tarea").value; // Obtener el valor del input con id "tarea"
+    tareas.push(nombreTarea); // Agregar la nueva tarea al arreglo de tareas
+    pintarTareas(tareas); // Llamar a la función para actualizar la visualización de las tareas
 }
+
+// Función para eliminar una tarea
 const eliminarTarea = (nombreTarea) => {
-    const indice = tareas.indexOf(nombreTarea);
-    tareas.splice(indice, 1);
-    pintarTareas(tareas);
+    const indice = tareas.indexOf(nombreTarea); // Obtener el índice de la tarea a eliminar
+    tareas.splice(indice, 1); // Eliminar la tarea del arreglo de tareas
+    pintarTareas(tareas); // Actualizar la visualización de las tareas
 }
+
+// Función para editar una tarea
 const editarTarea = (nombreTarea) => {
-    const nuevoNombre  = prompt("Nuevo Nombre");
-    const indice = tareas.indexOf(nombreTarea);
-    tareas.splice(indice, 1, nuevoNombre);
-
-    pintarTareas(tareas);
+    const nuevoNombre  = prompt("Nuevo Nombre"); // Pedir al usuario el nuevo nombre de la tarea
+    const indice = tareas.indexOf(nombreTarea); // Obtener el índice de la tarea a editar
+    tareas.splice(indice, 1, nuevoNombre); // Reemplazar el nombre de la tarea en el arreglo de tareas
+    pintarTareas(tareas); // Actualizar la visualización de las tareas
 }
 
+// Función para mostrar las tareas en el HTML
+const pintarTareas = (tareas) => {
+    contenido.innerHTML = ""; // Limpiar el contenido actual del elemento HTML
 
-const pintarTareas = (tareas) =>{
-    contenido.innerHTML = ""
-
-    tareas.forEach (tarea =>{
+    // Iterar sobre todas las tareas y agregarlas al elemento HTML
+    tareas.forEach (tarea => {
         contenido.innerHTML += `
             <div>${tarea} 
                 <button type="button" class="button2" onclick="editarTarea('${tarea}')">Editar</button>
                 <button type="button" class="button2" onclick="eliminarTarea('${tarea}')">Eliminar</button>
             </div>`;
-    })
+    });
 }
 
-
-
-
-
-
-
-
-
-pintarTareas(tareas)
+pintarTareas(tareas); // Llamar a la función para inicializar la visualización de las tareas
