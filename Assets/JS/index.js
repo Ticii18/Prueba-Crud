@@ -30,6 +30,12 @@ let contenido = document.getElementById("contenido"); // Obtener el elemento HTM
 // Función para crear una nueva tarea
 const crearTarea = () => {
     const nombreTarea = document.getElementById("tarea").value; // Obtener el valor del input con id "tarea"
+
+    if (nombreTarea == "") { // Si el nombre de la tarea está vacío, mostrar un mensaje de error
+        alert("Debes ingresar un nombre para la tarea");
+        return;
+    }
+
     tareas.push(nombreTarea); // Agregar la nueva tarea al arreglo de tareas
     pintarTareas(tareas); // Llamar a la función para actualizar la visualización de las tareas
 }
