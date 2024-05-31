@@ -1,3 +1,5 @@
+//codigo para el html comentado en index.html
+
 // const form = document.getElementById("registerUser");
 
 // form.addEventListener("submit", (e) =>{
@@ -15,6 +17,10 @@
 //     }
 
 // })
+
+
+
+// codigo para index.html
 
 // creamos el array
 let tareas = []; // Arreglo para almacenar las tareas
