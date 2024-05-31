@@ -48,22 +48,26 @@ const eliminarTarea = (nombreTarea) => {
 }
 
 // Función para editar una tarea
-const editarTarea = (nombreTarea) => {
-    const nuevoNombre  = prompt("Nuevo Nombre"); // Pedir al usuario el nuevo nombre de la tarea
-    const indice = tareas.indexOf(nombreTarea); // Obtener el índice de la tarea a editar
-    tareas.splice(indice, 1, nuevoNombre); // Reemplazar el nombre de la tarea en el arreglo de tareas
-    pintarTareas(tareas); // Actualizar la visualización de las tareas
+const editarTarea = (nombreTarea, indice) => {
+    const nuevoNombre = prompt("Nuevo Nombre"); // Pedir al usuario el nuevo nombre de la tarea
+    
+    if (nuevoNombre !== null) { // Verificar si se ingresó un nuevo nombre
+        tareas.splice(indice, 1, nuevoNombre); // Reemplazar el nombre de la tarea en el arreglo de tareas
+        pintarTareas(tareas); // Actualizar la visualización de las tareas
+    }
 }
+
+
 
 // Función para mostrar las tareas en el HTML
 const pintarTareas = (tareas) => {
     contenido.innerHTML = ""; // Limpiar el contenido actual del elemento HTML
 
     // Iterar sobre todas las tareas y agregarlas al elemento HTML
-    tareas.forEach (tarea => {
+    tareas.forEach((tarea, indice) => {
         contenido.innerHTML += `
             <div>${tarea} 
-                <button type="button" class="button2" onclick="editarTarea('${tarea}')">Editar</button>
+                <button type="button" class="button2" onclick="editarTarea('${tarea}', ${indice})">Editar</button>
                 <button type="button" class="button2" onclick="eliminarTarea('${tarea}')">Eliminar</button>
             </div>`;
     });
